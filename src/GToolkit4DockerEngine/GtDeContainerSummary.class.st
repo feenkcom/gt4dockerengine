@@ -31,6 +31,19 @@ GtDeContainerSummary >> command: anObject [
 	command := anObject
 ]
 
+{ #category : #accessing }
+GtDeContainerSummary >> continuousLogStream [
+	| anUrl text client |
+	anUrl := 'http://localhost:2375/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&follow=true'.
+	client := ZnClient new
+		url: anUrl;
+		method: #GET; 
+		streaming:true;
+		getConnectionAndExecute.
+		
+	^ client
+]
+
 { #category : #'as yet unclassified' }
 GtDeContainerSummary >> created [
 	^ self rawData at:'Created'
@@ -50,6 +63,15 @@ GtDeContainerSummary >> getLogText [
 		get.
 	text := (text asString lines collect: [:l | l allButFirst:8]) fold: [:i :f |  i, String lf,f ].
 	^ text
+]
+
+{ #category : #accessing }
+GtDeContainerSummary >> gtLiveFor: aView [
+	<gtView>
+	|client connection |
+	client := self continuousLogStream.
+	^ connection := client connection liveTranscript asElement gtLiveFor: aView. 
+	"^ self asElement gtLiveFor: aView"
 ]
 
 { #category : #accessing }
