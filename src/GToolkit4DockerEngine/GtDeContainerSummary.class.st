@@ -74,10 +74,10 @@ GtDeContainerSummary >> gtConnectionFor: aView [
 { #category : #accessing }
 GtDeContainerSummary >> gtLiveFor: aView [
 	<gtView>
-	|client connection |
+	|client liveView |
 	client := self continuousLogStream.
-	^ connection := client connection liveTranscript asElement gtLiveFor: aView. 
-	"^ self asElement gtLiveFor: aView"
+	liveView := client connection liveTranscript gtLiveFor: aView. 
+	^ liveView title: 'Live Log'
 ]
 
 { #category : #accessing }

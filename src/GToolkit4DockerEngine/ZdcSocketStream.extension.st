@@ -7,7 +7,7 @@ ZdcSocketStream >> liveTranscript [
 	loop := [
 		| index str|
 		index := 1.
-		10 timesRepeat: [
+		50 timesRepeat: [
 			available := readBuffer availableForReading.
 			(available > 0) ifTrue: [
 				str := readBuffer contents.
@@ -19,10 +19,10 @@ ZdcSocketStream >> liveTranscript [
 							(readBuffer isEmpty and: [ self isConnected ])
 								ifTrue: [ 
 									[ socket waitForDataFor: 5. self fillReadBufferNoWait. ] 
-										on: ConnectionTimedOut do: [ 
-											transcript cr; cr;cr;cr; 
+										on: ConnectionTimedOut do: [ "
+											transcript cr; 
 												nextPutAll: index asString; 
-												cr; cr; cr; cr; cr]]].
+												 cr"]]].
 			index := index + 1. ]] newProcess.
 	loop resume.
 	^ transcript
