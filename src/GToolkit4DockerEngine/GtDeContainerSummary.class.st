@@ -66,6 +66,12 @@ GtDeContainerSummary >> getLogText [
 ]
 
 { #category : #accessing }
+GtDeContainerSummary >> gtConnectionFor: aView [
+	<gtView>
+	^ (self continuousLogStream connection gtRawFor: aView) title: 'Live Connection'
+]
+
+{ #category : #accessing }
 GtDeContainerSummary >> gtLiveFor: aView [
 	<gtView>
 	|client connection |

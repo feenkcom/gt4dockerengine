@@ -10,10 +10,9 @@ ZdcSocketStream >> liveTranscript [
 		10 timesRepeat: [
 			available := readBuffer availableForReading.
 			(available > 0) ifTrue: [
+				str := readBuffer contents.
 				readBuffer advanceReadPointer: available. 
-				str := readBuffer buffer.
-				transcript nextPutAll: (str); 
-				cr; cr].
+				transcript nextPutAll: (str)].
 			readBuffer isEmpty 
 						ifTrue: [
 							self fillReadBufferNoWait.
