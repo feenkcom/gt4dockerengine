@@ -101,6 +101,16 @@ GtDeContainerSummary >> gtLiveFor: aView [
 ]
 
 { #category : #accessing }
+GtDeContainerSummary >> gtLiveLogLinesFor: aView [
+	<gtView>
+	|view|
+	self continuousReadLoop.
+	view := lines gtItemsFor: aView.
+	view title: 'Live Log Lines'.
+	^ view
+]
+
+{ #category : #accessing }
 GtDeContainerSummary >> gtLogFor: aView [
 	<gtView>
 	|text logURL|
