@@ -11,11 +11,11 @@ ZdcSocketStream >> liveTranscript [
 			available := readBuffer availableForReading.
 			(available > 0) ifTrue: [
 				str := readBuffer contents.
-				str asString lines do: [:l | 
+				"str asString lines do: [:l | 
 					l size > 8 ifTrue: [
-						transcript nextPutAll: (l allButFirst:8). ]
-						"ifFalse: [stream nextPutAll: l]".
-					transcript nextPutAll: String lf. ].
+						transcript nextPutAll: (l allButFirst:8) ]
+					transcript nextPutAll: String lf. ]."
+				transcript nextPutAll: str.
 				readBuffer advanceReadPointer: available].
 			readBuffer isEmpty 
 						ifTrue: [

@@ -17,10 +17,17 @@ Class {
 		'sizeRw',
 		'state',
 		'status',
-		'baseUrl'
+		'baseUrl',
+		'lines',
+		'liveReadLoop'
 	],
 	#category : #'GToolkit4DockerEngine-Model'
 }
+
+{ #category : #accessing }
+GtDeContainerSummary >> addConsoleLogEntry: str [ 
+	lines add: str.
+]
 
 { #category : #accessing }
 GtDeContainerSummary >> baseUrl: anObject [ 
@@ -46,8 +53,15 @@ GtDeContainerSummary >> continuousLogStream [
 		method: #GET; 
 		streaming:true;
 		getConnectionAndExecute.
-		
 	^ client
+]
+
+{ #category : #accessing }
+GtDeContainerSummary >> continuousReadLoop [
+	liveReadLoop ifNil: [
+		liveReadLoop := self continuousLogStream connection liveReadLoopDo: [:str | 
+			self addConsoleLogEntry: str asString]].
+	^ liveReadLoop
 ]
 
 { #category : #'as yet unclassified' }
@@ -228,7 +242,8 @@ GtDeContainerSummary >> ports: anObject [
 { #category : #accessing }
 GtDeContainerSummary >> rawData: anObject [
 		rawData := anObject.
-		self image: (rawData at: 'Image')
+		self image: (rawData at: 'Image').
+		lines := OrderedCollection new.
 ]
 
 { #category : #'as yet unclassified' }
