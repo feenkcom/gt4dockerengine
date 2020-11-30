@@ -67,7 +67,7 @@ GtDeContainerSummary >> getLogText [
 	text := ZnClient new
 		url: anUrl;
 		get.
-	text := (text asString lines collect: [:l | l allButFirst:8]) fold: [:i :f |  i, String lf,f ].
+	"text := (text asString lines collect: [:l | l allButFirst:8]) fold: [:i :f |  i, String lf,f ]."
 	^ text
 ]
 
