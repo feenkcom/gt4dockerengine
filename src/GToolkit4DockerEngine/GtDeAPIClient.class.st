@@ -23,7 +23,7 @@ GtDeAPIClient >> getContainersJson [
 	url  := baseUrl,'/containers/json'.
 	json := self getForUrl: url.
 	array:= STON fromString: json.
-	^ array collect: [:d | GtDeContainerSummary new rawData: d]
+	^ array collect: [:d | GtDeContainerSummary new rawData: d; baseUrl: self baseUrl]
 ]
 
 { #category : #accessing }

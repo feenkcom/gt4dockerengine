@@ -16,10 +16,16 @@ Class {
 		'sizeRootFs',
 		'sizeRw',
 		'state',
-		'status'
+		'status',
+		'baseUrl'
 	],
 	#category : #'GToolkit4DockerEngine-Model'
 }
+
+{ #category : #accessing }
+GtDeContainerSummary >> baseUrl: anObject [ 
+	baseUrl := anObject
+]
 
 { #category : #'as yet unclassified' }
 GtDeContainerSummary >> command [
@@ -34,7 +40,7 @@ GtDeContainerSummary >> command: anObject [
 { #category : #accessing }
 GtDeContainerSummary >> continuousLogStream [
 	| anUrl text client |
-	anUrl := 'http://localhost:2375/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&follow=true'.
+	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&follow=true'.
 	client := ZnClient new
 		url: anUrl;
 		method: #GET; 
@@ -57,7 +63,7 @@ GtDeContainerSummary >> created: anObject [
 { #category : #accessing }
 GtDeContainerSummary >> getLogText [
 	| anUrl text |
-	anUrl := 'http://localhost:2375/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true'.
+	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true'.
 	text := ZnClient new
 		url: anUrl;
 		get.
