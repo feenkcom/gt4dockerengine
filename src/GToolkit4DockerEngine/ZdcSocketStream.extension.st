@@ -2,17 +2,21 @@ Extension { #name : #ZdcSocketStream }
 
 { #category : #'*GToolkit4DockerEngine' }
 ZdcSocketStream >> liveTranscript [
-	| transcript loop available |
+	| transcript loop available cleanString|
 	transcript := GtTranscript new.
 	loop := [
 		| index str|
 		index := 1.
-		50 timesRepeat: [
+		[true] whileTrue: [
 			available := readBuffer availableForReading.
 			(available > 0) ifTrue: [
 				str := readBuffer contents.
-				readBuffer advanceReadPointer: available. 
-				transcript nextPutAll: (str)].
+				str asString lines do: [:l | 
+					l size > 8 ifTrue: [
+						transcript nextPutAll: (l allButFirst:8). ]
+						"ifFalse: [stream nextPutAll: l]".
+					transcript nextPutAll: String lf. ].
+				readBuffer advanceReadPointer: available].
 			readBuffer isEmpty 
 						ifTrue: [
 							self fillReadBufferNoWait.

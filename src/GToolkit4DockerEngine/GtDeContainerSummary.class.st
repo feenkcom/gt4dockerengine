@@ -95,8 +95,44 @@ GtDeContainerSummary >> gtLogFor: aView [
 	^ aView textEditor
 		look: BrGlamorousCodeEditorLook;
 		"styler: JcConsoleStyler new;"
-		title: 'Console Log';
-		text: [ text]
+		title: 'Console log';
+		text: [ text ]
+]
+
+{ #category : #accessing }
+GtDeContainerSummary >> gtMysqlNotesFor: aView [
+	<gtView>
+	|text logURL view|
+	text := self getLogText.
+	text ifNil: [^aView empty].
+	((image findString: 'mysql') = 0) ifTrue: [^aView empty].
+	text := (text asString lines select: [:l | (l findString:'[Note]') > 0  ]) collect: [:l | l allButFirst: 8 ].
+		
+	^ aView columnedList
+		title:'MySQL [Notes]';
+		priority: 21;
+		items: [ text ];
+		actionUpdateButtonTooltip: 'Update item list';
+		column: 'Log entry' 
+			text: [ :eachItem | eachItem gtDisplayText ].
+]
+
+{ #category : #accessing }
+GtDeContainerSummary >> gtMysqlWarningsFor: aView [
+	<gtView>
+	|text logURL view|
+	text := self getLogText.
+	text ifNil: [^aView empty].
+	((image findString: 'mysql') = 0) ifTrue: [^aView empty].
+	text := (text asString lines select: [:l | (l findString:'[Warning]') > 0  ]) collect: [:l | l allButFirst: 8 ].
+	^ aView columnedList
+		title: 'MySQL [Warnings]';
+		priority: 20;
+		items: [ text ];
+		actionUpdateButtonTooltip: 'Update item list';
+		column: 'Log entry' 
+			text: [ :eachItem | eachItem gtDisplayText ].
+
 ]
 
 { #category : #'as yet unclassified' }
@@ -187,6 +223,12 @@ GtDeContainerSummary >> ports [
 { #category : #'as yet unclassified' }
 GtDeContainerSummary >> ports: anObject [
 	ports := anObject
+]
+
+{ #category : #accessing }
+GtDeContainerSummary >> rawData: anObject [
+		rawData := anObject.
+		self image: (rawData at: 'Image')
 ]
 
 { #category : #'as yet unclassified' }

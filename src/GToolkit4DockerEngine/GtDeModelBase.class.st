@@ -12,7 +12,7 @@ GtDeModelBase >> rawData [
 		^ rawData
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtDeModelBase >> rawData: anObject [
-		rawData := anObject
+		rawData := anObject.
 ]
