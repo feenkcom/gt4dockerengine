@@ -95,21 +95,12 @@ GtDeContainerSummary >> gtConnectionFor: aView [
 ]
 
 { #category : #accessing }
-GtDeContainerSummary >> gtLiveFor: aView [
-	<gtView>
-	|client liveView |
-	client := self continuousLogStream.
-	liveView := client connection liveTranscript gtLiveFor: aView. 
-	^ liveView title: 'Live Log'
-]
-
-{ #category : #accessing }
 GtDeContainerSummary >> gtLiveLogLinesFor: aView [
 	<gtView>
 	|view|
 	self continuousReadLoop.
 	view := lines gtItemsFor: aView.
-	view title: 'Live Log Lines'.
+	view title: 'Live Log'.
 	view updateWhen: GtDeDockerLogEntrySignal in: [anAnnouncer].
 	^ view
 ]
