@@ -19,7 +19,8 @@ Class {
 		'status',
 		'baseUrl',
 		'lines',
-		'liveReadLoop'
+		'liveReadLoop',
+		'anAnnouncer'
 	],
 	#category : #'GToolkit4DockerEngine-Model'
 }
@@ -59,8 +60,10 @@ GtDeContainerSummary >> continuousLogStream [
 { #category : #accessing }
 GtDeContainerSummary >> continuousReadLoop [
 	liveReadLoop ifNil: [
+		anAnnouncer := Announcer new.
 		liveReadLoop := self continuousLogStream connection liveReadLoopDo: [:str | 
-			self addConsoleLogEntry: str asString]].
+			self addConsoleLogEntry: str asString.
+			anAnnouncer announce: GtDeDockerLogEntrySignal new]].
 	^ liveReadLoop
 ]
 
@@ -107,7 +110,7 @@ GtDeContainerSummary >> gtLiveLogLinesFor: aView [
 	self continuousReadLoop.
 	view := lines gtItemsFor: aView.
 	view title: 'Live Log Lines'.
-	view updateWhen: GtDeDockerLogEntrySignal in: IceAnnouncer.
+	view updateWhen: GtDeDockerLogEntrySignal in: [anAnnouncer].
 	^ view
 ]
 
