@@ -2,7 +2,7 @@ Extension { #name : #ZdcSocketStream }
 
 { #category : #'*GToolkit4DockerEngine' }
 ZdcSocketStream >> liveReadLoopDo: aBloc [
-	| loop available |
+	| loop available count|
 	loop := [
 		| index str|
 		index := 1.
@@ -12,14 +12,17 @@ ZdcSocketStream >> liveReadLoopDo: aBloc [
 				str := readBuffer contents.
 				str asString lines do: [:l | 
 					l size > 8 ifTrue: [ aBloc value: l ]].
+					
 				readBuffer advanceReadPointer: available].
 			readBuffer isEmpty 
 						ifTrue: [
 							self fillReadBufferNoWait.
 							(readBuffer isEmpty and: [ self isConnected ])
 								ifTrue: [ 
-									[ socket waitForDataFor: 5. self fillReadBufferNoWait. ] 
-										on: ConnectionTimedOut do: [ ]]].
+									[ socket waitForDataFor: 5. 
+										count := self fillReadBufferNoWait.
+										count > 0 ifTrue: [GtDeDockerLogEntrySignal new emit.]] 
+											on: ConnectionTimedOut do: [ ]]].
 			index := index + 1. ]] newProcess.
 	loop resume.
 	^ loop

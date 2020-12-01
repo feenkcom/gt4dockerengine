@@ -47,7 +47,7 @@ GtDeContainerSummary >> command: anObject [
 { #category : #accessing }
 GtDeContainerSummary >> continuousLogStream [
 	| anUrl text client |
-	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&follow=true'.
+	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&follow=true&tail=400'.
 	client := ZnClient new
 		url: anUrl;
 		method: #GET; 
@@ -77,7 +77,7 @@ GtDeContainerSummary >> created: anObject [
 { #category : #accessing }
 GtDeContainerSummary >> getLogText [
 	| anUrl text |
-	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true'.
+	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&tail=400'.
 	text := ZnClient new
 		url: anUrl;
 		get.
@@ -107,6 +107,7 @@ GtDeContainerSummary >> gtLiveLogLinesFor: aView [
 	self continuousReadLoop.
 	view := lines gtItemsFor: aView.
 	view title: 'Live Log Lines'.
+	view updateWhen: GtDeDockerLogEntrySignal in: IceAnnouncer.
 	^ view
 ]
 
