@@ -26,7 +26,7 @@ Class {
 
 { #category : #accessing }
 GtDeContainerSummary >> addConsoleLogEntry: str [ 
-	lines add: str.
+	lines fixedSize: 400 nextPut: str.
 ]
 
 { #category : #accessing }
@@ -253,7 +253,7 @@ GtDeContainerSummary >> ports: anObject [
 GtDeContainerSummary >> rawData: anObject [
 		rawData := anObject.
 		self image: (rawData at: 'Image').
-		lines := OrderedCollection new.
+		lines := SharedQueue new.
 ]
 
 { #category : #'as yet unclassified' }
