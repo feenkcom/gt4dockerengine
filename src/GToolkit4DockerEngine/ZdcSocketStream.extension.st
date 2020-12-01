@@ -20,8 +20,7 @@ ZdcSocketStream >> liveReadLoopDo: aBloc [
 							(readBuffer isEmpty and: [ self isConnected ])
 								ifTrue: [ 
 									[ socket waitForDataFor: 5. 
-										count := self fillReadBufferNoWait.
-										count > 0 ifTrue: [GtDeDockerLogEntrySignal new emit.]] 
+									  self fillReadBufferNoWait] 
 											on: ConnectionTimedOut do: [ ]]].
 			index := index + 1. ]] newProcess.
 	loop resume.
