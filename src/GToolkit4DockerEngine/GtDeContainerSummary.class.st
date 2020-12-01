@@ -62,7 +62,7 @@ GtDeContainerSummary >> continuousReadLoop [
 	liveReadLoop ifNil: [
 		anAnnouncer := Announcer new.
 		liveReadLoop := self continuousLogStream connection liveReadLoopDo: [:str | 
-			self addConsoleLogEntry: str asString.
+			self addConsoleLogEntry: (str asString  allButFirst:8).
 			anAnnouncer announce: GtDeDockerLogEntrySignal new]].
 	^ liveReadLoop
 ]
@@ -84,7 +84,7 @@ GtDeContainerSummary >> getLogText [
 	text := ZnClient new
 		url: anUrl;
 		get.
-	"text := (text asString lines collect: [:l | l allButFirst:8]) fold: [:i :f |  i, String lf,f ]."
+	text := (text asString lines collect: [:l | l allButFirst:8]) fold: [:i :f |  i, String lf,f ].
 	^ text
 ]
 
@@ -99,10 +99,12 @@ GtDeContainerSummary >> gtLiveLogLinesFor: aView [
 	<gtView>
 	|view|
 	self continuousReadLoop.
-	view := lines gtItemsFor: aView.
-	view title: 'Live Log'.
-	view updateWhen: GtDeDockerLogEntrySignal in: [anAnnouncer].
-	^ view
+	^ aView columnedList 
+		title: 'Live Log';
+		updateWhen: GtDeDockerLogEntrySignal in: [anAnnouncer];
+		items: [ lines contents];
+		column: 'Log entry' item: [ :anItem :anIndex | anItem ]
+
 ]
 
 { #category : #accessing }
