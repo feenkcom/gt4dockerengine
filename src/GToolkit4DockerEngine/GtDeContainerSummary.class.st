@@ -84,7 +84,8 @@ GtDeContainerSummary >> getLogText [
 	text := ZnClient new
 		url: anUrl;
 		get.
-	text := (text asString lines collect: [:l | l allButFirst:8]) fold: [:i :f |  i, String lf,f ].
+	text ifNotNil: [
+		text := (text asString lines collect: [:l | l allButFirst:8]) fold: [:i :f |  i, String lf,f ]].
 	^ text
 ]
 
@@ -236,9 +237,14 @@ GtDeContainerSummary >> networkSettings: anObject [
 	networkSettings := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtDeContainerSummary >> ports [
-	^ self rawData at:'Ports'
+	| dictionary |
+	dictionary := (self rawData at:'Ports') first.
+	^ (dictionary at: 'PublicPort' ifAbsent: '|') asString, 
+		' - ', 
+		(dictionary at:'PrivatePort') asString
+	"^ (self rawData at:'Ports') first"
 ]
 
 { #category : #'as yet unclassified' }
