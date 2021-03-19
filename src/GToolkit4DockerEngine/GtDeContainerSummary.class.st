@@ -35,6 +35,33 @@ GtDeContainerSummary >> baseUrl: anObject [
 	baseUrl := anObject
 ]
 
+{ #category : #accessing }
+GtDeContainerSummary >> buildCommandLineView [
+	| commandViewContainer editor runButton verticalPane |
+	verticalPane := BrVerticalPane new.
+	verticalPane hMatchParent.
+	verticalPane vFitContent.
+	commandViewContainer := BrHorizontalPane new. 
+	commandViewContainer padding: (BlInsets all: 10).
+	editor := BrEditor new.
+	editor look: (BrGlamorousCodeEditorLook new); padding: (BlInsets all: 3).
+	editor border: (BlBorder paint: Color veryLightGray width: 1).
+	editor hMatchParent.
+	editor vFitContent.
+	
+	runButton := BrButton new
+			look: BrGlamorousButtonWithIconLook; 
+			action:  [ runButton phlow spawnObject: (self execLsCommandStream:editor text asString) connection ];
+			icon: BrGlamorousIcons spawn;
+			label: 'Run' translated .
+	commandViewContainer matchParent.
+	commandViewContainer addChild: editor.
+	commandViewContainer addChild: runButton.
+	commandViewContainer alignCenter.
+	verticalPane addChild: commandViewContainer.
+	^ verticalPane
+]
+
 { #category : #'as yet unclassified' }
 GtDeContainerSummary >> command [
 	^ self rawData at:'Command'
@@ -78,6 +105,26 @@ GtDeContainerSummary >> created: anObject [
 ]
 
 { #category : #accessing }
+GtDeContainerSummary >> execLsCommandStream: aCommandString [
+	| anUrl client headResponse encoder encodedData execid|
+	anUrl := baseUrl, '/containers/',self id,'/exec'.
+	client :=  ZnClient new
+		url: anUrl.
+
+	client request entity: (self lsCreateCommandEntity: aCommandString).
+	client contentReader: [ :entity | 
+			STONJSON fromString: entity contents ].
+	execid := client post at: 'Id'.
+	
+	anUrl := baseUrl, '/exec/',execid,'/start'.
+	client :=  ZnClient new
+		url: anUrl.
+	client request entity: self lsStartCommandEntity.
+	client streaming:true; method: #POST .
+	^ client getConnectionAndExecute  
+]
+
+{ #category : #accessing }
 GtDeContainerSummary >> getLogText [
 	| anUrl text |
 	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&tail=400'.
@@ -87,6 +134,14 @@ GtDeContainerSummary >> getLogText [
 	text ifNotNil: [
 		text := (text asString lines collect: [:l | l allButFirst:8]) fold: [:i :f |  i, String lf,f ]].
 	^ text
+]
+
+{ #category : #accessing }
+GtDeContainerSummary >> gtCommandLineFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Command line';
+		stencil: [self buildCommandLineView]
 ]
 
 { #category : #accessing }
@@ -103,7 +158,7 @@ GtDeContainerSummary >> gtLiveLogLinesFor: aView [
 	^ aView columnedList 
 		title: 'Live Log';
 		updateWhen: GtDeDockerLogEntrySignal in: [anAnnouncer];
-		items: [ lines contents];
+		items: [ lines contents ];
 		column: 'Log entry' item: [ :anItem :anIndex | anItem ]
 
 ]
@@ -205,6 +260,16 @@ GtDeContainerSummary >> labels [
 { #category : #'as yet unclassified' }
 GtDeContainerSummary >> labels: anObject [
 	labels := anObject
+]
+
+{ #category : #accessing }
+GtDeContainerSummary >> lsCreateCommandEntity: aCommandString [
+	^  ZnEntity json: ('{ "AttachStdout": true, "AttachStderr": true, "Tty": false, "Cmd":["sh", "-c", "',aCommandString,'" ]}')
+]
+
+{ #category : #accessing }
+GtDeContainerSummary >> lsStartCommandEntity [
+	^  ZnEntity json: ('{"Detach":false, "Tty":false}')
 ]
 
 { #category : #'as yet unclassified' }
