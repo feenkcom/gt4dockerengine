@@ -41,18 +41,20 @@ GtDeContainerSummary >> buildCommandLineView [
 	verticalPane := BrVerticalPane new.
 	verticalPane hMatchParent.
 	verticalPane vFitContent.
-	commandViewContainer := BrHorizontalPane new. 
-	commandViewContainer padding: (BlInsets all: 10).
-	editor := BrEditor new.
-	editor look: (BrGlamorousCodeEditorLook new); padding: (BlInsets all: 3).
-	editor border: (BlBorder paint: Color veryLightGray width: 1).
-	editor hMatchParent.
-	editor vFitContent.
+	commandViewContainer := BrHorizontalPane new
+		padding: (BlInsets all: 10).
+	editor := BrEditor new
+		look: (BrGlamorousCodeEditorLook new); padding: (BlInsets all: 3);
+		border: (BlBorder paint: Color veryLightGray width: 1);
+		margin: (BlInsets all: 10);
+		padding: (BlInsets all: 10);
+		hMatchParent;
+		vFitContent.
 	
 	runButton := BrButton new
 			look: BrGlamorousButtonWithIconLook; 
 			action:  [ runButton phlow spawnObject: (self execLsCommandStream:editor text asString) connection ];
-			icon: BrGlamorousIcons spawn;
+			icon: BrGlamorousIcons playinspect;
 			label: 'Run' translated .
 	commandViewContainer matchParent.
 	commandViewContainer addChild: editor.

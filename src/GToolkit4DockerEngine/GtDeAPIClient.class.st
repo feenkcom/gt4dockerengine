@@ -46,6 +46,11 @@ GtDeAPIClient >> gtContainersFor: aView [
 		column: 'Created' text: [ :eachItem | (DateAndTime now - (DateAndTime fromUnixTime: eachItem created)) gtHumanReadableString ] width: 60;
 		column: 'Status' text: [ :eachItem | eachItem status ] width: 80;
 		column: 'Ports' text: [ :eachItem | eachItem ports];
-		column: 'Names' text: [ :eachItem | eachItem names ];
+		column: 'Names' text: [ :eachItem | ',' join: eachItem names ];
 		actionUpdateButtonTooltip: 'Update item list'
+]
+
+{ #category : #accessing }
+GtDeAPIClient >> gtDisplayOn: stream [
+	stream nextPutAll: self baseUrl
 ]
