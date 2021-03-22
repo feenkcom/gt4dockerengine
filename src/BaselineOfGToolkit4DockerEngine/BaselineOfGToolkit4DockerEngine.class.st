@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #accessing }
-BaselineOfGToolkit4DockerEngine >> baselineOf: spec [
+BaselineOfGToolkit4DockerEngine >> baseline: spec [
 <baseline>
 	spec
 		for: #common do: [
