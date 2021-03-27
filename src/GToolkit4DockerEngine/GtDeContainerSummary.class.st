@@ -44,7 +44,7 @@ GtDeContainerSummary >> buildCommandLineView [
 	commandViewContainer := BrHorizontalPane new
 		padding: (BlInsets all: 10).
 	editor := BrEditor new
-		look: (BrGlamorousCodeEditorLook new); padding: (BlInsets all: 3);
+		aptitude: (BrGlamorousCodeEditorAptitude new); padding: (BlInsets all: 3);
 		border: (BlBorder paint: Color veryLightGray width: 1);
 		margin: (BlInsets all: 10);
 		padding: (BlInsets all: 10);
@@ -52,7 +52,7 @@ GtDeContainerSummary >> buildCommandLineView [
 		vFitContent.
 	
 	runButton := BrButton new
-			look: BrGlamorousButtonWithIconLook; 
+			aptitude: BrGlamorousButtonWithIconAptitude; 
 			action:  [ runButton phlow spawnObject: (self execLsCommandStream:editor text asString) connection ];
 			icon: BrGlamorousIcons playinspect;
 			label: 'Run' translated .
@@ -172,7 +172,7 @@ GtDeContainerSummary >> gtLogFor: aView [
 	text := self getLogText.
 	text ifNil: [^aView empty].
 	^ aView textEditor
-		look: BrGlamorousCodeEditorLook;
+		aptitude: BrGlamorousCodeEditorAptitude;
 		"styler: JcConsoleStyler new;"
 		title: 'Console log';
 		text: [ text ]
