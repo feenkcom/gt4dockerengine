@@ -1,0 +1,483 @@
+{
+	"__type" : "page",
+	"__schema" : "4.0",
+	"pageType" : {
+		"title" : "Useful Docker Commands",
+		"__type" : "namedPage"
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "chisvasileandrei@gmail.com"
+	},
+	"createTime" : {
+		"time" : {
+			"dateAndTimeString" : "2020-12-02T20:41:50.647115+01:00",
+			"__type" : "dateAndTime"
+		},
+		"__type" : "time"
+	},
+	"uid" : {
+		"uuid" : "4d95eb2b-e271-0d00-b213-fb4600ad9b81",
+		"__type" : "uuid"
+	},
+	"editTime" : {
+		"time" : {
+			"dateAndTimeString" : "2020-12-02T20:42:03.94259+01:00",
+			"__type" : "dateAndTime"
+		},
+		"__type" : "time"
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "chisvasileandrei@gmail.com"
+	},
+	"children" : {
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"string" : "See full information about docker\n `$ docker version`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:17.004082+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "2Oo2KEoT",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:44:08.046011+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "List the current installed images\n`$ docker images` ",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:19.738752+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "lFyfj5AB",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:44:16.493962+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "List all running containers\n`$ docker ps`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:27.127373+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "9iyFuLwR",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:44:19.730362+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "List all running and previously run containers\n`$ docker ps -a`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:29.905116+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "oZVYTeWW",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:44:22.673003+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "Stop a container by name or id\n`$ docker stop  cranky_keldysh`\n\n`$ docker kill  cranky_keldysh`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:33.287971+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "ylfSc6Wj",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:44:53.76925+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "Delete a stopped container permanently by name/id\n`$ docker rm  cranky_keldysh`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:44.331909+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "eGQ5wk0D",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:44:57.693519+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "Delete an image that has no containers\n`$ docker rmi <image name>`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:46.662802+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "2HBTXpm0",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:45:01.021953+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "Download an image to the host without running a container\n`$ docker pull <image name>`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:48.797121+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "UUSmtD5A",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:45:03.681799+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "Create a new image called home using the Dockerfile in the current directory\n`$ docker build -t hello-home .`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:51.803005+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "+ztjSqaF",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:45:06.808281+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "Run the given image\n    -p: maps a port in the host to a port in the running container\n    -v: maps a folder on the host to a folder in the running container\n`$ docker run -p 80:80 -v /Users/user/hello-home/src:/var/www/html/ hello-home`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:54.555903+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "0z5O4Ntq",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:45:48.790867+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "Run in detach/attach mode\n`$ docker run -d hello-home // does not attach the container to the current terminal `\n`$ docker attach <container name/id>`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:56.929885+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "a2OdhO8A",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:46:14.356459+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			},
+			{
+				"__type" : "textSnippet",
+				"string" : "Containers only live as long as the main process started in the container is running.\n`$ docker ubuntu  //exits immediately`\n`$ docker ubuntu sleep 5 //runs the sleep command and then exists after 5 seconds`",
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"createTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:42:12.952252+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"uid" : {
+					"uidString" : "LXSZr8fK",
+					"__type" : "uid"
+				},
+				"editTime" : {
+					"time" : {
+						"dateAndTimeString" : "2020-12-02T20:46:21.569887+01:00",
+						"__type" : "dateAndTime"
+					},
+					"__type" : "time"
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "chisvasileandrei@gmail.com"
+				},
+				"children" : {
+					"items" : [ ],
+					"__type" : "snippets"
+				}
+			}
+		],
+		"__type" : "snippets"
+	}
+}
