@@ -1,6 +1,6 @@
 Class {
-	#name : #GtDeContainerSummary,
-	#superclass : #GtDeModelBase,
+	#name : 'GtDeContainerSummary',
+	#superclass : 'GtDeModelBase',
 	#instVars : [
 		'command',
 		'created',
@@ -22,20 +22,20 @@ Class {
 		'liveReadLoop',
 		'anAnnouncer'
 	],
-	#category : #'GToolkit4DockerEngine-Model'
+	#category : 'GToolkit4DockerEngine-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> addConsoleLogEntry: str [ 
 	lines fixedSize: 400 nextPut: str.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> baseUrl: anObject [ 
 	baseUrl := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> buildCommandLineView [
 	| commandViewContainer editor runButton verticalPane |
 	verticalPane := BrVerticalPane new.
@@ -64,17 +64,17 @@ GtDeContainerSummary >> buildCommandLineView [
 	^ verticalPane
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> command [
 	^ self rawData at:'Command'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> command: anObject [
 	command := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> continuousLogStream [
 	| anUrl text client |
 	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&follow=true&tail=400'.
@@ -86,7 +86,7 @@ GtDeContainerSummary >> continuousLogStream [
 	^ client
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> continuousReadLoop [
 	liveReadLoop ifNil: [
 		anAnnouncer := Announcer new.
@@ -96,17 +96,17 @@ GtDeContainerSummary >> continuousReadLoop [
 	^ liveReadLoop
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> created [
 	^ self rawData at:'Created'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> created: anObject [
 	created := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> execLsCommandStream: aCommandString [
 	| anUrl client headResponse encoder encodedData execid|
 	anUrl := baseUrl, '/containers/',self id,'/exec'.
@@ -126,7 +126,7 @@ GtDeContainerSummary >> execLsCommandStream: aCommandString [
 	^ client getConnectionAndExecute  
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> getLogText [
 	| anUrl text |
 	anUrl := baseUrl, '/containers/',self id,'/logs?stdout=true&stderr=true&timestamps=true&tail=400'.
@@ -138,7 +138,7 @@ GtDeContainerSummary >> getLogText [
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> gtCommandLineFor: aView [
 	<gtView>
 	^ aView explicit
@@ -146,26 +146,26 @@ GtDeContainerSummary >> gtCommandLineFor: aView [
 		stencil: [self buildCommandLineView]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> gtConnectionFor: aView [
 	<gtView>
 	^ (self continuousLogStream connection gtRawFor: aView) title: 'Live Connection'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> gtLiveLogLinesFor: aView [
 	<gtView>
-	|view|
+
 	self continuousReadLoop.
 	^ aView columnedList 
 		title: 'Live Log';
 		updateWhen: GtDeDockerLogEntrySignal in: [anAnnouncer];
 		items: [ lines contents ];
-		column: 'Log entry' item: [ :anItem :anIndex | anItem ]
+		column: 'Log entry' text: [ :anItem :anIndex | anItem ]
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> gtLogFor: aView [
 	<gtView>
 	|text logURL|
@@ -178,7 +178,7 @@ GtDeContainerSummary >> gtLogFor: aView [
 		text: [ text ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> gtMysqlNotesFor: aView [
 	<gtView>
 	|text logURL view|
@@ -196,7 +196,7 @@ GtDeContainerSummary >> gtMysqlNotesFor: aView [
 			text: [ :eachItem | eachItem gtDisplayText ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> gtMysqlWarningsFor: aView [
 	<gtView>
 	|text logURL view|
@@ -214,97 +214,97 @@ GtDeContainerSummary >> gtMysqlWarningsFor: aView [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> hostConfig [
 	^ self rawData at:'HostConfig'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> hostConfig: anObject [
 	hostConfig := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> id [
 	^ self rawData at:'Id'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> image [
 	^ self rawData at:'Image'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> image: anObject [
 	image := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> imageID [
 	^ self rawData at:'ImageID'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> imageID: anObject [
 	imageID := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> labels [
 	^ self rawData at:'Labels'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> labels: anObject [
 	labels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> lsCreateCommandEntity: aCommandString [
 	^  ZnEntity json: ('{ "AttachStdout": true, "AttachStderr": true, "Tty": false, "Cmd":["sh", "-c", "',aCommandString,'" ]}')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> lsStartCommandEntity [
 	^  ZnEntity json: ('{"Detach":false, "Tty":false}')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> mounts [
 	^ self rawData at:'Mounts'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> mounts: anObject [
 	mounts := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> names [
 	^ self rawData at:'Names'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> names: anObject [
 	names := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> networkSettings [
 	^ self rawData at:'NetworkSettings'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> networkSettings: anObject [
 	networkSettings := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> ports [
 	| dictionary |
 	dictionary := (self rawData at:'Ports') first.
@@ -314,54 +314,54 @@ GtDeContainerSummary >> ports [
 	"^ (self rawData at:'Ports') first"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> ports: anObject [
 	ports := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeContainerSummary >> rawData: anObject [
 		rawData := anObject.
 		self image: (rawData at: 'Image').
 		lines := SharedQueue new.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> sizeRootFs [
 	^ self rawData at:'SizeRootFs'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> sizeRootFs: anObject [
 	sizeRootFs := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> sizeRw [
 	^ self rawData at:'SizeRw'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> sizeRw: anObject [
 	sizeRw := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> state [
 	^ self rawData at:'State'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> state: anObject [
 	state := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> status [
 	^ self rawData at:'Status'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtDeContainerSummary >> status: anObject [
 	status := anObject
 ]

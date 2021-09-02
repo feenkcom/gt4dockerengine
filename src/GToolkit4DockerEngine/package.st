@@ -1,1 +1,1 @@
-Package { #name : #GToolkit4DockerEngine }
+Package { #name : 'GToolkit4DockerEngine' }

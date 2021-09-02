@@ -1,6 +1,6 @@
-Extension { #name : #ZdcIOBuffer }
+Extension { #name : 'ZdcIOBuffer' }
 
-{ #category : #'*GToolkit4DockerEngine' }
+{ #category : '*GToolkit4DockerEngine' }
 ZdcIOBuffer >> gtBufferFor: aView [
 	<gtView>
 	^ aView textEditor
