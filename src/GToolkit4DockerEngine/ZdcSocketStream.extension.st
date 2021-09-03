@@ -1,6 +1,6 @@
-Extension { #name : #ZdcSocketStream }
+Extension { #name : 'ZdcSocketStream' }
 
-{ #category : #'*GToolkit4DockerEngine' }
+{ #category : '*GToolkit4DockerEngine' }
 ZdcSocketStream >> liveReadLoopDo: aBloc [
 	| loop available count|
 	loop := [
@@ -27,7 +27,7 @@ ZdcSocketStream >> liveReadLoopDo: aBloc [
 	^ loop
 ]
 
-{ #category : #'*GToolkit4DockerEngine' }
+{ #category : '*GToolkit4DockerEngine' }
 ZdcSocketStream >> liveTranscript [
 	| transcript loop available cleanString|
 	transcript := GtTranscript new.

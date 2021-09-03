@@ -1,23 +1,23 @@
 Class {
-	#name : #GtDeAPIClient,
-	#superclass : #Object,
+	#name : 'GtDeAPIClient',
+	#superclass : 'Object',
 	#instVars : [
 		'baseUrl'
 	],
-	#category : #'GToolkit4DockerEngine-Client'
+	#category : 'GToolkit4DockerEngine-Client'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeAPIClient >> baseUrl [
 	^ baseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeAPIClient >> baseUrl: aBaseUrl [
 	baseUrl := aBaseUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeAPIClient >> getContainersJson [
 	|json url array |
 	url  := baseUrl,'/containers/json'.
@@ -26,14 +26,14 @@ GtDeAPIClient >> getContainersJson [
 	^ array collect: [:d | GtDeContainerSummary new rawData: d; baseUrl: self baseUrl]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeAPIClient >> getForUrl: anUrl [
 	^ ZnClient new
 		url: anUrl;
 		get.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeAPIClient >> gtContainersFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -50,7 +50,7 @@ GtDeAPIClient >> gtContainersFor: aView [
 		actionUpdateButtonTooltip: 'Update item list'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtDeAPIClient >> gtDisplayOn: stream [
 	stream nextPutAll: self baseUrl
 ]
