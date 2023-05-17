@@ -149,7 +149,7 @@ GtDeContainerSummary >> gtCommandLineFor: aView [
 { #category : #accessing }
 GtDeContainerSummary >> gtConnectionFor: aView [
 	<gtView>
-	^ (self continuousLogStream connection gtRawFor: aView) title: 'Live Connection'
+	^ (self continuousLogStream connection gtRawFor: aView) title: 'Live connection'
 ]
 
 { #category : #accessing }
@@ -158,7 +158,7 @@ GtDeContainerSummary >> gtLiveLogLinesFor: aView [
 
 	self continuousReadLoop.
 	^ aView columnedList 
-		title: 'Live Log';
+		title: 'Live log';
 		updateWhen: GtDeDockerLogEntrySignal in: [anAnnouncer];
 		items: [ lines contents ];
 		column: 'Log entry' text: [ :anItem :anIndex | anItem ]
