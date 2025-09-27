@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'baseUrl'
 	],
-	#category : 'GToolkit4DockerEngine-Client'
+	#category : #'GToolkit4DockerEngine-Client'
 }
 
 { #category : #accessing }

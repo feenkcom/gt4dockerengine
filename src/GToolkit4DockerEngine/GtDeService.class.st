@@ -10,7 +10,7 @@ Class {
 		'updatedAt',
 		'version'
 	],
-	#category : 'GToolkit4DockerEngine-Model'
+	#category : #'GToolkit4DockerEngine-Model'
 }
 
 { #category : #'as yet unclassified' }

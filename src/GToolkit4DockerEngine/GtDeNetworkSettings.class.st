@@ -21,7 +21,7 @@ Class {
 		'secondaryIPAddresses',
 		'secondaryIPv6Addresses'
 	],
-	#category : 'GToolkit4DockerEngine-Model'
+	#category : #'GToolkit4DockerEngine-Model'
 }
 
 { #category : #'as yet unclassified' }

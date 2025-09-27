@@ -6,7 +6,7 @@ Class {
 		'driver',
 		'options'
 	],
-	#category : 'GToolkit4DockerEngine-Model'
+	#category : #'GToolkit4DockerEngine-Model'
 }
 
 { #category : #'as yet unclassified' }
