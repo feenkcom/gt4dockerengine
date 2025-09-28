@@ -54,7 +54,7 @@ GtDeContainerSummary >> buildCommandLineView [
 	runButton := BrButton new
 			aptitude: BrGlamorousButtonWithIconAptitude; 
 			action:  [ runButton phlow spawnObject: (self execLsCommandStream:editor text asString) connection ];
-			icon: BrGlamorousIcons playinspect;
+			icon: BrGlamorousVectorIcons playinspect;
 			label: 'Run' translated .
 	commandViewContainer matchParent.
 	commandViewContainer addChild: editor.
